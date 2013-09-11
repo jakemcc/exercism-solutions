@@ -12,17 +12,18 @@ class Bob
 
   end
 
-  private
-  
-  def silence?(phrase)
-    phrase.strip.empty?
-  end
+end
 
-  def shouting?(phrase)
-    !silence?(phrase) && phrase.upcase == phrase
-  end
+private
 
-  def question?(phrase)
-    phrase.end_with?("?")
-  end
+def silence?(phrase)
+  phrase.strip.empty?
+end
+
+def shouting?(phrase)
+  !silence?(phrase) && phrase.upcase == phrase
+end
+
+def question?(phrase)
+  phrase.end_with?("?")
 end

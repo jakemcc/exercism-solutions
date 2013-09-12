@@ -1,11 +1,6 @@
-(ns dna)
-
-(defn- dna-nucleotide->rna-nucleotide
-  [dna]
-  (if (= dna \T)
-    \U
-    dna))
+(ns dna
+  (:require [clojure.string :as string]))
 
 (defn to-rna
   [dna]
-  (apply str (map dna-nucleotide->rna-nucleotide dna)))
+  (string/replace dna "T" "U"))

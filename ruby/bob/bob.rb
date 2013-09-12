@@ -12,7 +12,7 @@ class Bob
   def interpret(phrase)
     return :silence  if phrase.strip.empty?
     return :shouting if phrase.upcase == phrase
-    return :question if phrase.end_with?('?')
+    return :question if phrase.strip.end_with?('?')
     :normal
   end
 end

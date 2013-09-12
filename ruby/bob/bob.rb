@@ -1,29 +1,18 @@
 class Bob
   def hey(phrase)
-    if silence?(phrase)
-      'Fine. Be that way!'
-    elsif shouting?(phrase)
-      'Woah, chill out!'
-    elsif question?(phrase)
-      'Sure.'
-    else
-      'Whatever.'
+    case interpret(phrase)
+      when :silence  then 'Fine. Be that way!'
+      when :shouting then 'Woah, chill out!'
+      when :question then 'Sure.'
+      else 'Whatever.'
     end
-
   end
 
-end
-
-private
-
-def silence?(phrase)
-  phrase.strip.empty?
-end
-
-def shouting?(phrase)
-  !silence?(phrase) && phrase.upcase == phrase
-end
-
-def question?(phrase)
-  phrase.end_with?("?")
+  private
+  def interpret(phrase)
+    return :silence  if phrase.strip.empty?
+    return :shouting if phrase.upcase == phrase
+    return :question if phrase.end_with?('?')
+    :normal
+  end
 end

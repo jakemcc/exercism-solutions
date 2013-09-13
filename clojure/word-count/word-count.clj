@@ -12,12 +12,11 @@
   (string/replace s #"[^a-z0-9 ]" ""))
 
 (defn- words [phrase]
-  (string/split phrase #" "))
-
-(defn word-count [phrase]
   (-> phrase
       string/lower-case
       remove-special-characters
-      words
-      remove-blank
-      frequencies))
+      (string/split #" ")
+      remove-blank))
+
+(defn word-count [phrase]
+  (frequencies (words phrase)))
